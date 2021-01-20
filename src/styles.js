@@ -12,7 +12,7 @@ const Styles = makeStyles(theme => ({
   },
 
   container: {
-    marginTop: theme.spacing( 10 ),
+    marginTop: theme.spacing( 11 ),
   },
 
   paper: {
@@ -50,6 +50,9 @@ const Styles = makeStyles(theme => ({
 
   tableUserColumn: {
     width: '30%'
+  },
+  snackbar: {
+    marginTop: 50,
   },
 }));
 

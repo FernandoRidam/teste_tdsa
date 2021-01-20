@@ -4,14 +4,16 @@ import {
   Container,
 } from '@material-ui/core';
 
+import { StateProvider } from './store';
+
 import Routes from './routes';
 
-export function App() {
+export default function App() {
   return (
-    <Container maxWidth="lg">
-      <Routes />
-    </Container>
+    <StateProvider>
+      <Container maxWidth="lg">
+        <Routes />
+      </Container>
+    </StateProvider>
   );
 };
-
-export default App;
