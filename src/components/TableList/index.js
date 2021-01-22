@@ -28,6 +28,8 @@ export function TableList({ title }) {
             <TableCell className={ stylesClass.tableIdColumn }>ID</TableCell>
             <TableCell className={ stylesClass.tableTitleColumn }>Título</TableCell>
             <TableCell className={ stylesClass.tableUserColumn }>Usuário</TableCell>
+            <TableCell className={ stylesClass.tableUserColumn }>Ações</TableCell>
+            <TableCell className={ stylesClass.tableCollapseColumn } />
           </TableRow>
         </TableHead>
 

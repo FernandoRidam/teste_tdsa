@@ -45,12 +45,43 @@ const Styles = makeStyles(theme => ({
   },
 
   tableTitleColumn: {
-    width: '60%'
+    width: '55%'
   },
 
   tableUserColumn: {
-    width: '30%'
+    width: '20%'
   },
+
+  tableActionsColumn: {
+    width: '10%'
+  },
+
+  tableCollapseColumn: {
+    paddingBottom: 0,
+    padding: 0,
+    width: '5%'
+  },
+
+  icon: {
+    width: 30,
+    height: 30,
+  },
+
+  iconDelete: {
+    color: theme.palette.error.main,
+  },
+
+  box: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'left',
+    width: '100%',
+  },
+
+  messageView: {
+    padding: 10,
+  },
+
   snackbar: {
     marginTop: 50,
   },
