@@ -25,12 +25,35 @@ const Styles = makeStyles(theme => ({
     color: '#FFF',
   },
 
+  textField: {
+    width: '100%',
+    backgroundColor: '#FFF',
+    borderRadius: 5,
+  },
+
   select: {
     width: '100%',
     backgroundColor: '#FFF',
   },
 
+  linearProgress: {
+    position: 'absolute',
+    color: theme.palette.primary.contrastText,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderBottomRightRadius: theme.shape.borderRadius,
+    borderBottomLeftRadius: theme.shape.borderRadius,
+  },
+
+  tableView: {
+    height: 500,
+    padding: 0,
+    overflowY: 'scroll',
+  },
+
   table: {
+    height: 500,
     padding: 5,
     backgroundColor: '#FFF',
   },
@@ -45,11 +68,11 @@ const Styles = makeStyles(theme => ({
   },
 
   tableTitleColumn: {
-    width: '55%'
+    width: '50%'
   },
 
   tableUserColumn: {
-    width: '20%'
+    width: '25%'
   },
 
   tableActionsColumn: {
@@ -68,7 +91,18 @@ const Styles = makeStyles(theme => ({
   },
 
   iconDelete: {
+    width: 30,
+    height: 30,
+    marginLeft: 10,
     color: theme.palette.error.main,
+  },
+
+  closedCollapse: {
+    padding: 0,
+  },
+
+  textInfo: {
+    width: '100%',
   },
 
   box: {

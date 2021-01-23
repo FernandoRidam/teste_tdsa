@@ -10,6 +10,8 @@ import App from './App';
 
 import theme from './theme';
 
+import './styles.css';
+
 ReactDOM.render(
   <ThemeProvider theme={ theme }>
     <CssBaseline />

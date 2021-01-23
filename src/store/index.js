@@ -6,13 +6,23 @@ import {
 } from './hooks';
 
 export const store = createContext({
-  users: { data: [], getUsers: () => ({ success: true, data: []})},
-  posts: { data: [], getPosts: () => ({ success: true, data: []})},
+  users: {
+    loading: false,
+    data: [],
+    getUsers: () => ({ success: true, data: []}),
+  },
+
+  posts: {
+    loading: false,
+    data: [],
+    getPosts: () => ({ success: true, data: []}),
+    getPostsByUser: () => ({ success: true, data: []}),
+  },
 });
 
 const { Provider } = store;
 
-export const useStore = () => useContext(store);
+export const useStore = () => useContext( store );
 
 export function StateProvider({ children }) {
   const users = useUsers();
