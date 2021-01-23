@@ -19,26 +19,44 @@ import {
   KeyboardArrowDown,
 } from '@material-ui/icons';
 
+import {
+  useStore,
+} from '../../store';
+
 import styles from '../../styles';
 
-export function Row() {
+export function Row({ post }) {
   const stylesClass = styles();
 
+  const { users } = useStore();
+
   const [ open, setOpen ] = useState( false );
+
+  function getUserName() {
+    return users?.data.find( user => post.userId === user.id )?.name;
+  };
 
   return (
     <>
       <TableRow>
-        <TableCell className={ stylesClass.tableIdColumn }>01</TableCell>
-        <TableCell className={ stylesClass.tableTitleColumn }>Título</TableCell>
-        <TableCell className={ stylesClass.tableUserColumn }>Usuário</TableCell>
+        <TableCell className={ stylesClass.tableIdColumn }>
+          <Typography variant="body1">{ post?.id }</Typography>
+        </TableCell>
 
-        <TableCell className={ stylesClass.tableActionsColumn } align="justify">
+        <TableCell className={ stylesClass.tableTitleColumn }>
+          <Typography variant="body1">{ post?.title }</Typography>
+        </TableCell>
+
+        <TableCell className={ stylesClass.tableUserColumn }>
+          <Typography variant="body1">{ getUserName()}</Typography>
+        </TableCell>
+
+        <TableCell className={ stylesClass.tableActionsColumn } align="center">
           <IconButton className={ stylesClass.icon } color="primary" onClick={() => {}}>
             <Edit />
           </IconButton>
 
-          <IconButton className={[ stylesClass.icon, stylesClass.iconDelete ]} onClick={() => {}}>
+          <IconButton className={ stylesClass.iconDelete } onClick={() => {}}>
             <Delete />
           </IconButton>
         </TableCell>
@@ -51,13 +69,13 @@ export function Row() {
       </TableRow>
 
       <TableRow>
-        <TableCell colSpan={ 6 }>
+        <TableCell colSpan={ 5 } className={ !open ? stylesClass.closedCollapse : {}}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box className={ stylesClass.box }>
               <Typography variant="h6">Mensagem</Typography>
 
               <Container className={ stylesClass.messageView }>
-                <Typography variant="body2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Typography>
+                <Typography variant="body2">{ post.body }</Typography>
               </Container>
             </Box>
           </Collapse>
