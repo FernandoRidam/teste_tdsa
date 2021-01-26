@@ -39,6 +39,7 @@ import {
 } from '../../store';
 
 import styles from '../../styles';
+import { LoadingButton } from '../LoadingButton';
 
 export function ModalPost({ open, close }) {
   const { t, i18n } = useTranslation();
@@ -169,31 +170,29 @@ export function ModalPost({ open, close }) {
             </FormControl>
 
             <Container className={ stylesClass.actions }>
-              <Button
+              <LoadingButton
                 variant="contained"
                 color="primary"
                 type="submit"
                 onClick={() => setStayOpen( true )}
                 className={ stylesClass.action }
                 disabled={ posts.saving || ( post && !isDirty )}
+                loading={ posts.saving }
               >
                 { t('buttons.saveAndContinue')}
+              </LoadingButton>
 
-                { posts.saving && <LinearProgress className={ stylesClass.linearProgress} />}
-              </Button>
-
-              <Button
+              <LoadingButton
                 variant="contained"
                 color="primary"
                 type="submit"
                 onClick={() => setStayOpen( false )}
                 className={ stylesClass.action }
                 disabled={ posts.saving || ( post && !isDirty )}
+                loading={ posts.saving }
               >
                 { t('buttons.save')}
-
-                { posts.saving && <LinearProgress className={ stylesClass.linearProgress} />}
-              </Button>
+              </LoadingButton>
 
               <Button
                 variant="outlined"
