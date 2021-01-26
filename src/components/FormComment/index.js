@@ -27,6 +27,7 @@ import {
 } from '../HelperText';
 
 import styles from '../../styles';
+import { LoadingButton } from '../LoadingButton';
 
 export function FormComment({ postValues, postIsValid }) {
   const { t, i18n } = useTranslation();
@@ -80,7 +81,6 @@ export function FormComment({ postValues, postIsValid }) {
   return (
     <Container className={ stylesClass.form }>
       <form
-        // className={ stylesClass.form }
         onSubmit={ handleSubmit( onSubmit )}
       >
         <Typography variant="h6">{ t('modal.subTitleComment')}</Typography>
@@ -123,16 +123,15 @@ export function FormComment({ postValues, postIsValid }) {
         />
 
         <Container className={ stylesClass.actionsComment }>
-          <Button
+          <LoadingButton
             variant="contained"
             color="primary"
             type="submit"
             disabled={ comments.saving || postIsValid }
+            loading={ comments.saving }
           >
             { t('buttons.save')}
-
-            { comments.saving && <LinearProgress className={ stylesClass.linearProgress} />}
-          </Button>
+          </LoadingButton>
         </Container>
       </form>
 
