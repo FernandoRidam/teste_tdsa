@@ -19,16 +19,20 @@ import {
   KeyboardArrowDown,
 } from '@material-ui/icons';
 
+import { useTranslation } from 'react-i18next';
+
 import {
   useStore,
 } from '../../store';
 
 import styles from '../../styles';
 
-export function Row({ post }) {
+export function RowPost({ post, openModalPost }) {
+  const { t, i18n } = useTranslation();
+
   const stylesClass = styles();
 
-  const { users } = useStore();
+  const { users, posts } = useStore();
 
   const [ open, setOpen ] = useState( false );
 
@@ -36,9 +40,15 @@ export function Row({ post }) {
     return users?.data.find( user => post.userId === user.id )?.name;
   };
 
+  function handleEditPost() {
+    posts.selectPost( post );
+
+    openModalPost();
+  };
+
   return (
     <>
-      <TableRow>
+      <TableRow className={ stylesClass.row }>
         <TableCell className={ stylesClass.tableIdColumn }>
           <Typography variant="body1">{ post?.id }</Typography>
         </TableCell>
@@ -52,7 +62,11 @@ export function Row({ post }) {
         </TableCell>
 
         <TableCell className={ stylesClass.tableActionsColumn } align="center">
-          <IconButton className={ stylesClass.icon } color="primary" onClick={() => {}}>
+          <IconButton
+            className={ stylesClass.icon }
+            color="primary"
+            onClick={ handleEditPost }
+          >
             <Edit />
           </IconButton>
 
@@ -68,11 +82,11 @@ export function Row({ post }) {
         </TableCell>
       </TableRow>
 
-      <TableRow>
+      <TableRow className={ stylesClass.collapseRow }>
         <TableCell colSpan={ 5 } className={ !open ? stylesClass.closedCollapse : {}}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box className={ stylesClass.box }>
-              <Typography variant="h6">Mensagem</Typography>
+              <Typography variant="h6">{ t('tablePosts.columnMessage')}</Typography>
 
               <Container className={ stylesClass.messageView }>
                 <Typography variant="body2">{ post.body }</Typography>

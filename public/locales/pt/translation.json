@@ -1,0 +1,62 @@
+{
+  "header": {
+    "title": "Teste TDSA",
+    "lang": "Português",
+    "langLabel": "Linguagem"
+  },
+
+  "body": {
+    "quickSearch": "Busca Rápida",
+    "labelSearch": "Título, Mensagem, Usuário Etc.",
+    "user": "Usuário",
+    "all": "Todos"
+  },
+
+  "tablePosts": {
+    "titleTable": "Postagens",
+    "columnTitle": "Título",
+    "columnUser": "Usuário",
+    "columnActions": "Ações",
+    "columnMessage": "Mensagem",
+    "emptyData": "Nenhuma postagem encontrada...",
+    "addButton": "Adicionar"
+  },
+
+  "modal": {
+    "titleNew": "Nova Postagem",
+    "titleEdit": "Editar Postagem",
+    "subTitlePost": "Postagem",
+    "subTitleComment": "Comentário",
+    "subTitleComments": "Comentários",
+    "emptyData": "Nenhum comentário..."
+  },
+
+  "fields": {
+    "fieldName": "Nome",
+    "fieldEmail": "Email",
+    "fieldComment": "Comentário"
+  },
+
+  "form": {
+    "helperText": "é um campo obrigatório!"
+  },
+
+  "alerts": {
+    "successNewPost": "Postagem salva com sucesso!",
+    "successEditPost": "Postagem alterada com sucesso!",
+    "successNewComment": "Comentário salvo com sucesso!",
+
+    "failureNewPost": "Falha ao salvar postagem!",
+    "failureEditPost": "Falha ao alterar postagem!",
+    "failureNewComment": "Falha ao salvar comentário!",
+
+    "failureGetUsers": "Falha ao recuperar usuários!",
+    "failureGetPosts": "Falha ao recuperar postagens!"
+  },
+
+  "buttons": {
+    "save": "Salvar",
+    "saveAndContinue": "Salvar e Continuar",
+    "exit": "Fechar"
+  }
+}

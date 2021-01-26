@@ -10,7 +10,7 @@ const theme = createMuiTheme({
     },
 
     secondary: {
-      main: '#697782',
+      main: '#FFF',
     },
 
     error: {
@@ -18,8 +18,18 @@ const theme = createMuiTheme({
     },
 
     background: {
-      default: '#fff',
+      default: '#FFF',
     },
+  },
+
+  overrides: {
+    MuiInputLabel: {
+      outlined: {
+        backgroundColor: '#FFF',
+        paddingLeft: 2,
+        paddingRight: 2
+      }
+    }
   },
 });
 

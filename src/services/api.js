@@ -1,3 +1,4 @@
+const API_URL = 'https://jsonplaceholder.typicode.com';
 const GET = 'GET';
 const POST = 'POST';
 const PUT = 'PUT';
@@ -9,16 +10,16 @@ module.exports = {
     return await apiCall( path, GET );
   },
 
-  async post( path ) {
-    return await apiCall( path, POST );
+  async post( path, data ) {
+    return await apiCall( path, POST, data );
   },
 
-  async put( path ) {
-    return await apiCall( path, PUT );
+  async put( path, data ) {
+    return await apiCall( path, PUT, data );
   },
 
-  async patch( path ) {
-    return await apiCall( path, PATCH );
+  async patch( path, data ) {
+    return await apiCall( path, PATCH, data );
   },
 
   async delete( path ) {
@@ -26,9 +27,10 @@ module.exports = {
   },
 };
 
-async function apiCall( path, method ) {
-  const data = await fetch(`https://jsonplaceholder.typicode.com${ path }`, {
+async function apiCall( path, method, body ) {
+  const data = await fetch(`${ API_URL }${ path }`, {
     method,
+    body,
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },

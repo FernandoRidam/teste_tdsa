@@ -8,7 +8,21 @@ const Styles = makeStyles(theme => ({
   },
 
   toolbar: {
-    paddingRight: 24
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    // paddingRight: 24
+  },
+
+  checks: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: 235,
+    padding: 0,
   },
 
   container: {
@@ -28,12 +42,18 @@ const Styles = makeStyles(theme => ({
   textField: {
     width: '100%',
     backgroundColor: '#FFF',
+    marginTop: 15,
     borderRadius: 5,
   },
 
   select: {
     width: '100%',
     backgroundColor: '#FFF',
+    marginTop: 15,
+  },
+
+  helperText: {
+    fontSize: 11,
   },
 
   linearProgress: {
@@ -46,21 +66,52 @@ const Styles = makeStyles(theme => ({
     borderBottomLeftRadius: theme.shape.borderRadius,
   },
 
+  titleView: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    padding: 15,
+    paddingTop: 5,
+  },
+
   tableView: {
     height: 500,
     padding: 0,
-    overflowY: 'scroll',
+    backgroundColor: '#FFF',
+    overflowY: 'auto',
+  },
+
+  tableCommentsView: {
+    height: 315,
+    padding: 0,
+    backgroundColor: '#FFF',
+    overflowY: 'auto',
   },
 
   table: {
-    height: 500,
+    width: '100%',
+    maxHeight: 500,
     padding: 5,
-    backgroundColor: '#FFF',
+  },
+
+  tableComments: {
+    width: '100%',
+    maxHeight: 500,
+    padding: 5,
   },
 
   tableTitle: {
-    marginBottom: 10,
     color: '#FFF',
+  },
+
+  row: {
+    height: 45,
+  },
+
+  collapseRow: {
+    maxHeight: 200,
   },
 
   tableIdColumn: {
@@ -83,6 +134,18 @@ const Styles = makeStyles(theme => ({
     paddingBottom: 0,
     padding: 0,
     width: '5%'
+  },
+
+  tableNameColumn: {
+    width: '30%',
+  },
+
+  tableEmailColumn: {
+    width: '30%',
+  },
+
+  tableCommentColumn: {
+    width: '40%',
   },
 
   icon: {
@@ -110,6 +173,7 @@ const Styles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'left',
     width: '100%',
+    maxHeight: 200,
   },
 
   messageView: {
@@ -118,6 +182,90 @@ const Styles = makeStyles(theme => ({
 
   snackbar: {
     marginTop: 50,
+  },
+
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  modalView: {
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    overflow: 'hidden',
+    width: '90%',
+  },
+
+  modalToolbar: {
+    paddingRight: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+    backgroundColor: theme.palette.primary.main,
+    minHeight: 40
+  },
+
+  modalTitle: {
+    flex: '1 1 100%',
+    color: theme.palette.primary.contrastText,
+    fontSize: theme.typography.fontSize * 1.25
+  },
+
+  bodyModal: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    height: '100%',
+    padding: 10,
+    paddingBottom: 60,
+  },
+
+  divider: {
+    marginRight: 5,
+    marginLeft: 5,
+  },
+
+  form: {
+    width: '50%',
+    padding: 0,
+    paddingRight: 10,
+    paddingLeft: 10,
+  },
+
+  comments: {
+    width: '100%',
+  },
+
+  commentsTable: {
+    maxHeight: 405,
+    padding: 0,
+  },
+
+  actions: {
+    position: 'absolute',
+    bottom: 15,
+    left: 20,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    padding: 0,
+    paddingTop: 10,
+  },
+
+  actionsComment: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    alignItems: 'center',
+    width: '100%',
+    padding: 0,
+    paddingTop: 10,
+  },
+
+  action: {
+    marginRight: 15,
   },
 }));
 

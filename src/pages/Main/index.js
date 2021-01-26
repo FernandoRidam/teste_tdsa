@@ -23,11 +23,12 @@ import {
   Close,
 } from '@material-ui/icons';
 
-import MuiAlert from '@material-ui/lab/Alert';
+import { useTranslation } from 'react-i18next';
 
 import {
   ApplicationBar,
-  TableList,
+  ModalPost,
+  TableListPost,
 } from '../../components';
 
 import {
@@ -36,16 +37,13 @@ import {
 
 import styles from '../../styles';
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
-
 export function Main() {
   const stylesClass = styles();
-  const { users, posts } = useStore();
 
-  const [ openAlert, setOpenAlert ] = useState( false );
-  const [ message, setMessage ] = useState('');
+  const { t, i18n } = useTranslation();
+  const { alert, users, posts } = useStore();
+
+  const [ openModal, setOpenModal ] = useState( false );
 
   const [ selectedUser, setSelectedUser ] = useState( 0 );
 
@@ -55,9 +53,7 @@ export function Main() {
     const { success } = await users.getUsers();
 
     if (!success) {
-      setMessage('Falha ao recuperar usuários!');
-
-      setOpenAlert( true );
+      alert.showAlert('error', t('alerts.failureGetUsers'));
     }
   }, [ users ]);
 
@@ -66,17 +62,13 @@ export function Main() {
       const { success } = await posts.getPostsByUser( selectedUser );
 
       if (!success) {
-        setMessage('Falha ao recuperar postagens!');
-
-        setOpenAlert( true );
+        alert.showAlert('error', t('alerts.failureGetPosts'));
       }
     } else {
       const { success } = await posts.getPosts();
 
       if (!success) {
-        setMessage('Falha ao recuperar postagens!');
-
-        setOpenAlert( true );
+        alert.showAlert('error', t('alerts.failureGetPosts'));
       }
     }
   }, [ posts, selectedUser ]);
@@ -87,21 +79,20 @@ export function Main() {
 
   useEffect(() => {
     getUsers();
-    getPosts();
   }, []);
 
   return (
     <>
-      <ApplicationBar title="TESTE TDSA" />
+      <ApplicationBar title={ t('header.title')} />
 
       <Container className={ stylesClass.container }>
         <Grid container spacing={ 3 }>
           <Grid item xs={ 12 } md={ 4 } lg={ 4 }>
             <Paper className={ stylesClass.paper }>
-              <Typography variant="body1" className={ stylesClass.paperTitle }>Busca Rápida</Typography>
+              <Typography variant="body1" className={ stylesClass.paperTitle }>{ t('body.quickSearch')}</Typography>
 
               <TextField
-                placeholder="Título, Mensagem, Usuário Etc."
+                placeholder={ t('body.labelSearch')}
                 className={ stylesClass.textField }
                 variant="outlined"
                 color="primary"
@@ -123,7 +114,7 @@ export function Main() {
 
           <Grid item xs={ 12 } md={ 4 } lg={ 4 }>
             <Paper className={ stylesClass.paper }>
-              <Typography variant="body1" className={ stylesClass.paperTitle }>Usuário</Typography>
+              <Typography variant="body1" className={ stylesClass.paperTitle }>{ t('body.user')}</Typography>
 
               <Select
                 className={ stylesClass.select }
@@ -140,7 +131,7 @@ export function Main() {
 
                           <LinearProgress className={ stylesClass.linearProgress }/>
                         </>
-                      : 'Todos'
+                      : t('body.all')
                   }
                 </MenuItem>
                 {
@@ -152,15 +143,17 @@ export function Main() {
 
           <Grid item xs={12}>
             <Paper className={ stylesClass.paper }>
-              <TableList title="Postagens" search={ search.toLowerCase()}/>
+              <TableListPost
+                title={ t('tablePosts.titleTable')}
+                search={ search.toLowerCase()}
+                openModalPost={() => setOpenModal( true )}
+              />
             </Paper>
           </Grid>
         </Grid>
       </Container>
 
-      <Snackbar className={ stylesClass.snackbar } anchorOrigin={{ horizontal: 'right', vertical: 'top'}} open={ openAlert } autoHideDuration={ 6000 } onClose={() => setOpenAlert( false )}>
-        <Alert onClose={() => setOpenAlert( false )} severity="error">{ message }</Alert>
-      </Snackbar>
+      <ModalPost open={ openModal } close={() => setOpenModal( false )} />
     </>
   );
 };

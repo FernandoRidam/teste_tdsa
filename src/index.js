@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,10 +12,13 @@ import theme from './theme';
 
 import './styles.css';
 
-ReactDOM.render(
-  <ThemeProvider theme={ theme }>
-    <CssBaseline />
+import './config/i18n';
 
-    <App />
-  </ThemeProvider>
+ReactDOM.render(
+  <Suspense fallback="Loading...">
+    <ThemeProvider theme={ theme }>
+      <CssBaseline />
+      <App />
+    </ThemeProvider>
+  </Suspense>
 , document.getElementById('root'));
