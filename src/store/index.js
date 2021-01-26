@@ -1,11 +1,18 @@
-import React, { createContext, useContext, useCallback } from 'react';
+import React, { createContext, useContext } from 'react';
 
 import {
-  useUsers,
-  usePosts,
+  useAlert,
+  useUser,
+  usePost,
+  useComment,
 } from './hooks';
 
 export const store = createContext({
+  alert: {
+    showAlert: ( type, message ) => {},
+    closeAlert: () => {},
+  },
+
   users: {
     loading: false,
     data: [],
@@ -14,9 +21,22 @@ export const store = createContext({
 
   posts: {
     loading: false,
+    saving: false,
     data: [],
+    post: {},
+    savePost: () => ({ success: true, data: []}),
+    updatePost: () => ({ success: true, data: []}),
     getPosts: () => ({ success: true, data: []}),
     getPostsByUser: () => ({ success: true, data: []}),
+    selectPost: () => {},
+  },
+
+  comments: {
+    loading: false,
+    saving: false,
+    data: [],
+    saveComment: () => ({ success: true, data: []}),
+    getCommentsByPost: () => ({ success: true, data: []}),
   },
 });
 
@@ -25,14 +45,18 @@ const { Provider } = store;
 export const useStore = () => useContext( store );
 
 export function StateProvider({ children }) {
-  const users = useUsers();
-  const posts = usePosts();
+  const alert = useAlert();
+  const users = useUser();
+  const posts = usePost();
+  const comments = useComment();
 
   return (
     <Provider
       value={{
+        alert,
         users,
         posts,
+        comments,
       }}
     >
       { children }

@@ -2,7 +2,7 @@ import { useState, useCallback, useMemo } from 'react';
 
 import api from '../../services/api';
 
-export function useUsers() {
+export function useUser() {
   const [ loading, setLoading ] = useState( false );
   const [ data, setData ] = useState([]);
 

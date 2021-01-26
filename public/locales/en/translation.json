@@ -1,0 +1,61 @@
+{
+  "header": {
+    "title": "TDSA Test",
+    "lang": "English",
+    "langLabel": "Language"
+  },
+
+  "body": {
+    "quickSearch": "Quick Search",
+    "labelSearch": "Title, Message, User",
+    "user": "User",
+    "all": "All"
+  },
+
+  "tablePosts": {
+    "titleTable": "Posts",
+    "columnTitle": "Title",
+    "columnUser": "User",
+    "columnActions": "Actions",
+    "columnMessage": "Message",
+    "emptyData": "No Posts Found ...",
+    "addButton": "Add"
+  },
+
+  "modal": {
+    "titleNew": "New Post",
+    "titleEdit": "Edit Post",
+    "subTitlePost": "Post",
+    "subTitleComment": "Commentary",
+    "subTitleComments": "Comments",
+    "emptyData": "No comment..."
+  },
+
+  "fields": {
+    "fieldName": "Name",
+    "fieldComment": "Comment"
+  },
+
+  "form": {
+    "helperText": "is a required field!"
+  },
+
+  "alerts": {
+    "successNewPost": "Post saved successfully!",
+    "successEditPost": "Post changed successfully!",
+    "successNewComment": "Comment saved successfully!",
+
+    "failureNewPost": "Failed to save post!",
+    "failureEditPost": "Failed to change post!",
+    "failureNewComment": "Failed to save comment!",
+
+    "failureGetUsers": "Failed to retrieve users!",
+    "failureGetPosts": "Failed to retrieve posts!"
+  },
+
+  "buttons": {
+    "save": "Save",
+    "saveAndContinue": "Save and Continue",
+    "exit": "Close"
+  }
+}
